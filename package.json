@@ -49,7 +49,6 @@
     "@ckeditor/ckeditor5-table": "^36.0.1",
     "@ckeditor/ckeditor5-theme-lark": "^36.0.1",
     "@ckeditor/ckeditor5-typing": "^36.0.1",
-    "@ckeditor/ckeditor5-watchdog": "^36.0.1",
     "@ckeditor/ckeditor5-word-count": "^36.0.1",
     "@webspellchecker/wproofreader-ckeditor5": "^2.2.0",
     "@wiris/mathtype-ckeditor5": "^8.1.1",
