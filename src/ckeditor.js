@@ -5,7 +5,6 @@
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat.js';
-import AutoImage from '@ckeditor/ckeditor5-image/src/autoimage.js';
 import AutoLink from '@ckeditor/ckeditor5-link/src/autolink.js';
 import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave.js';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote.js';
@@ -27,21 +26,13 @@ import Heading from '@ckeditor/ckeditor5-heading/src/heading.js';
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight.js';
 import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline.js';
 import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed.js';
-import Image from '@ckeditor/ckeditor5-image/src/image.js';
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
-import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize.js';
-import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle.js';
-import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar.js';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent.js';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock.js';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic.js';
 import Link from '@ckeditor/ckeditor5-link/src/link.js';
-import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import ListProperties from '@ckeditor/ckeditor5-list/src/listproperties.js';
 import Markdown from '@ckeditor/ckeditor5-markdown-gfm/src/markdown.js';
-import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
-import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention.js';
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
@@ -79,7 +70,6 @@ class Editor extends ClassicEditor {}
 Editor.builtinPlugins = [
 	Alignment,
 	Autoformat,
-	AutoImage,
 	AutoLink,
 	Autosave,
 	BlockQuote,
@@ -101,21 +91,13 @@ Editor.builtinPlugins = [
 	Highlight,
 	HorizontalLine,
 	HtmlEmbed,
-	Image,
-	ImageCaption,
-	ImageResize,
-	ImageStyle,
-	ImageToolbar,
 	Indent,
 	IndentBlock,
 	Italic,
 	Link,
-	LinkImage,
 	List,
 	ListProperties,
 	Markdown,
-	MediaEmbed,
-	MediaEmbedToolbar,
 	Mention,
 	PageBreak,
 	Paragraph,
@@ -184,9 +166,8 @@ Editor.defaultConfig = {
 			'horizontalLine',
 			'|',
 			'blockQuote',
-			'insertTable',
-			'mediaEmbed',
 			'htmlEmbed',
+			'insertTable',
 			'|',
 			'removeFormat',
 			'specialCharacters',
@@ -195,16 +176,6 @@ Editor.defaultConfig = {
 		]
 	},
 	language: 'vi',
-	image: {
-		toolbar: [
-			'imageTextAlternative',
-			'toggleImageCaption',
-			'imageStyle:inline',
-			'imageStyle:block',
-			'imageStyle:side',
-			'linkImage'
-		]
-	},
 	table: {
 		contentToolbar: [
 			'tableColumn',
