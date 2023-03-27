@@ -13,12 +13,9 @@ import CKFinderUploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uplo
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices.js';
 import Code from '@ckeditor/ckeditor5-basic-styles/src/code.js';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock.js';
-import Comments from '@ckeditor/ckeditor5-comments/src/comments.js';
 import DataFilter from '@ckeditor/ckeditor5-html-support/src/datafilter.js';
 import DataSchema from '@ckeditor/ckeditor5-html-support/src/dataschema.js';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
-import ExportPdf from '@ckeditor/ckeditor5-export-pdf/src/exportpdf.js';
-import ExportWord from '@ckeditor/ckeditor5-export-word/src/exportword.js';
 import FindAndReplace from '@ckeditor/ckeditor5-find-and-replace/src/findandreplace.js';
 import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor.js';
 import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor.js';
@@ -42,16 +39,13 @@ import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import ListProperties from '@ckeditor/ckeditor5-list/src/listproperties.js';
 import Markdown from '@ckeditor/ckeditor5-markdown-gfm/src/markdown.js';
-import MathType from '@wiris/mathtype-ckeditor5';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
 import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention.js';
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak.js';
-import Pagination from '@ckeditor/ckeditor5-pagination/src/pagination.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice.js';
 import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat.js';
-import RevisionHistory from '@ckeditor/ckeditor5-revision-history/src/revisionhistory.js';
 import SpecialCharacters from '@ckeditor/ckeditor5-special-characters/src/specialcharacters.js';
 import SpecialCharactersArrows from '@ckeditor/ckeditor5-special-characters/src/specialcharactersarrows.js';
 import SpecialCharactersCurrency from '@ckeditor/ckeditor5-special-characters/src/specialcharacterscurrency.js';
@@ -75,32 +69,6 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
-import WProofreader from '@webspellchecker/wproofreader-ckeditor5/src/wproofreader.js';
-
-class RevisionHistoryAdapter {
-	static get requires() {
-		return [ 'RevisionHistory' ];
-	}
-
-	constructor( editor ) {
-		this.editor = editor;
-	}
-
-	init() {
-		const editor = this.editor;
-		const revisionHistory = editor.plugins.get( 'RevisionHistory' );
-		const revisions = [];
-
-		revisionHistory.adapter = {
-			getRevision: async ( { revisionId } ) => {
-				return revisions.find( data => data.id == revisionId );
-			},
-			updateRevisions: async revisionsData => {
-				revisions.splice( 0, revisions.length, ...revisionsData );
-			}
-		};
-	}
-}
 
 class Editor extends ClassicEditor {}
 
@@ -116,12 +84,9 @@ Editor.builtinPlugins = [
 	CloudServices,
 	Code,
 	CodeBlock,
-	Comments,
 	DataFilter,
 	DataSchema,
 	Essentials,
-	ExportPdf,
-	ExportWord,
 	FindAndReplace,
 	FontBackgroundColor,
 	FontColor,
@@ -145,16 +110,13 @@ Editor.builtinPlugins = [
 	List,
 	ListProperties,
 	Markdown,
-	MathType,
 	MediaEmbed,
 	MediaEmbedToolbar,
 	Mention,
 	PageBreak,
-	Pagination,
 	Paragraph,
 	PasteFromOffice,
 	RemoveFormat,
-	RevisionHistory,
 	SpecialCharacters,
 	SpecialCharactersArrows,
 	SpecialCharactersCurrency,
@@ -177,9 +139,7 @@ Editor.builtinPlugins = [
 	TextTransformation,
 	TodoList,
 	Underline,
-	WordCount,
-	WProofreader,
-	RevisionHistoryAdapter
+	WordCount
 ];
 
 // Editor configuration.
@@ -201,9 +161,7 @@ Editor.defaultConfig = {
 			'fontFamily',
 			'fontSize',
 			'fontColor',
-			'wproofreader',
 			'fontBackgroundColor',
-			'comment',
 			'superscript',
 			'subscript',
 			'highlight',
@@ -217,30 +175,21 @@ Editor.defaultConfig = {
 			'codeBlock',
 			'findAndReplace',
 			'horizontalLine',
-			'previousPage',
-			'nextPage',
-			'revisionHistory',
 			'|',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
 			'htmlEmbed',
 			'|',
-			'MathType',
-			'ChemType',
-			'pageNavigation',
 			'removeFormat',
 			'specialCharacters',
 			'strikethrough',
-			'restrictedEditingException',
-			'exportPdf',
-			'exportWord'
+			'restrictedEditingException'
 		]
 	},
 	language: 'vi',
 	image: {
 		toolbar: [
-			'comment',
 			'imageTextAlternative',
 			'toggleImageCaption',
 			'imageStyle:inline',
@@ -256,30 +205,7 @@ Editor.defaultConfig = {
 			'mergeTableCells',
 			'tableCellProperties',
 			'tableProperties'
-		],
-		tableToolbar: [
-			'comment'
 		]
-	},
-	pagination: {
-		pageWidth: '21cm',
-		pageHeight: '29.7cm',
-		pageMargins: {
-			top: '20mm',
-			bottom: '20mm',
-			left: '12mm',
-			right: '12mm'
-		}
-	},
-	comments: {
-		editorConfig: {
-			extraPlugins: [
-				Bold,
-				Italic,
-				List,
-				Autoformat
-			]
-		}
 	}
 };
 
