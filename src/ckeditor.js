@@ -5,7 +5,6 @@
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat.js';
-import AutoImage from '@ckeditor/ckeditor5-image/src/autoimage.js';
 import AutoLink from '@ckeditor/ckeditor5-link/src/autolink.js';
 import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave.js';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote.js';
@@ -32,11 +31,9 @@ import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalli
 import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed.js';
 import Image from '@ckeditor/ckeditor5-image/src/image.js';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
-import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert.js';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize.js';
 import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle.js';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar.js';
-import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload.js';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent.js';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock.js';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic.js';
@@ -112,7 +109,6 @@ class Editor extends ClassicEditor {}
 Editor.builtinPlugins = [
 	Alignment,
 	Autoformat,
-	AutoImage,
 	AutoLink,
 	Autosave,
 	BlockQuote,
@@ -139,11 +135,9 @@ Editor.builtinPlugins = [
 	HtmlEmbed,
 	Image,
 	ImageCaption,
-	ImageInsert,
 	ImageResize,
 	ImageStyle,
 	ImageToolbar,
-	ImageUpload,
 	Indent,
 	IndentBlock,
 	Italic,
@@ -195,21 +189,53 @@ Editor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'textPartLanguage',
+			'style',
 			'bold',
+			'underline',
 			'italic',
 			'link',
 			'bulletedList',
 			'numberedList',
+			'todoList',
+			'alignment',
+			'fontFamily',
+			'fontSize',
+			'fontColor',
+			'wproofreader',
+			'fontBackgroundColor',
+			'comment',
+			'superscript',
+			'subscript',
+			'highlight',
+			'pageBreak',
 			'|',
 			'outdent',
 			'indent',
+			'undo',
+			'redo',
+			'code',
+			'codeBlock',
+			'findAndReplace',
+			'horizontalLine',
+			'previousPage',
+			'nextPage',
+			'revisionHistory',
 			'|',
-			'imageUpload',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
-			'undo',
-			'redo'
+			'htmlEmbed',
+			'|',
+			'MathType',
+			'ChemType',
+			'pageNavigation',
+			'removeFormat',
+			'specialCharacters',
+			'strikethrough',
+			'restrictedEditingException',
+			'exportPdf',
+			'exportWord'
 		]
 	},
 	language: 'vi',
