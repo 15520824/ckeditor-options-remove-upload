@@ -154,6 +154,7 @@ Editor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'blockQuote',
 			'bold',
 			'italic',
 			'link',
