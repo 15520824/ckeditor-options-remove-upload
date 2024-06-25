@@ -189,6 +189,14 @@ Editor.defaultConfig = {
       "redo",
     ],
   },
+  fontFamily: {
+    options: [
+      "default",
+      "Times New Roman, Times, serif",
+      "Arial, Helvetica, sans-serif",
+    ],
+    supportAllValues: true,
+  },
   language: "vi",
   image: {
     toolbar: [
